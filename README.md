@@ -1,9 +1,11 @@
 # **Voice Cloning Prototype**
 
 1. Introduction:
+
 Voice cloning, modification, and karaoke generation are interesting applications that involve manipulating audio files to achieve specific effects. In this report, we will discuss the approach used to solve these problems and the reasons behind taking up this approach.
 
 2. Approach:
+
 The approach taken to solve the problem of voice cloning, modification, and karaoke generation involves the following key steps:
 
 2.1 Voice Cloning:
@@ -41,5 +43,6 @@ The code allows flexibility in terms of input and customization. For voice cloni
 The approach taken in the code leverages existing libraries and functions that are designed for efficient audio processing. This allows for faster execution and better performance compared to building custom solutions from scratch.
 
 4. Conclusion:
+
 The approach used for voice cloning, modification, and karaoke generation demonstrates a practical and effective solution to these audio-related tasks.
 By leveraging libraries like `gTTS` and `pydub`, the code provides accessible and flexible tools for generating voices, modifying audio characteristics, and creating karaoke tracks. The reasons for taking up this approach include accessibility, flexibility, and efficiency, allowing users to achieve desired audio effects with ease.
