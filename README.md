@@ -1,6 +1,5 @@
 # **Voice Cloning Prototype**
 
-**Voice Cloning Prototype - Approach and Explanation**
 
 The voice cloning prototype aims to clone the voice of a selected speaker from the VCTK Corpus dataset using the "Tortoise TTS" library. Below is the step-by-step explanation of the approach used in the voice cloning prototype:
 
