@@ -1,48 +1,34 @@
 # **Voice Cloning Prototype**
 
-1. Introduction:
+**Voice Cloning Prototype - Approach and Explanation**
 
-Voice cloning, modification, and karaoke generation are interesting applications that involve manipulating audio files to achieve specific effects. In this report, we will discuss the approach used to solve these problems and the reasons behind taking up this approach.
+The voice cloning prototype aims to clone the voice of a selected speaker from the VCTK Corpus dataset using the "Tortoise TTS" library. Below is the step-by-step explanation of the approach used in the voice cloning prototype:
 
-2. Approach:
+**1. Data Preparation:**
+- The Kaggle API credentials are set up to download the VCTK Corpus dataset from Kaggle.
+- The "speaker-info.txt" file is read to obtain information about the speakers, including their IDs, age, gender, accents, and regions.
+- A sample of 10 speakers is randomly selected from the dataset for building the voice cloning model.
 
-The approach taken to solve the problem of voice cloning, modification, and karaoke generation involves the following key steps:
+**2. Text and Audio Selection:**
+- The prototype selects a specific speaker (in this case, speaker with ID 'p248') to clone her voice.
+- A random sample of audio files is displayed for the selected speaker to get an idea of the original voice.
 
-2.1 Voice Cloning:
-The voice cloning task aims to generate audio that imitates a specific voice using a given text. To accomplish this, the code utilizes the `gTTS` (Google Text-to-Speech) library. The approach can be summarized as follows:
-- The text is passed as input to the `gTTS` library, which generates an audio file in the specified language and accent.
-- The generated audio is saved as an MP3 file.
-- Finally, the `IPython.display.Audio` function is used to play the audio file.
+**3. Data Preprocessing:**
+- The audio files of the selected speaker are converted to a common sample rate (22050 Hz) for compatibility with the Tortoise TTS library.
 
-2.2 Voice Modification:
-Voice modification involves altering the characteristics of an audio file, such as pitch shifting and applying filters. The code employs the `pydub` library for this purpose. The approach can be summarized as follows:
-- The `modify_voice` function takes an audio file path, pitch shift value, and filter options as input.
-- The audio file is loaded using `pydub` as an `AudioSegment` object.
-- Pitch shifting is achieved by adjusting the frame rate of the audio, thereby changing its pitch.
-- Filters, such as the authority and humbleness filters, can be applied based on the provided options. These filters adjust the cutoff frequencies of the audio, resulting in different effects.
-- The modified audio is exported as a WAV file using the `export` method of `AudioSegment`.
+**4. Define Text and Preset Option:**
+- A sample text is defined, which will be synthesized to generate the cloned voice.
+- A preset option is selected to determine the quality of the generated speech. Available options are "ultra_fast," "fast," "standard," and "high_quality." The "standard" preset is chosen for good quality speech synthesis.
 
-2.3 Karaoke Generation:
-Karaoke generation involves creating a new audio track by overlaying a voice track on top of a music track. The code utilizes the `pydub` library for this task. The approach can be summarized as follows:
-- The `create_karaoke` function takes the paths of the voice file and music file as input, along with an output file name.
-- Both the voice and music files are loaded using `pydub` as `AudioSegment` objects.
-- Volume levels can be adjusted if necessary to balance the voice and music tracks.
-- The voice and music tracks are overlaid using the `overlay` method of `AudioSegment`, resulting in a combined karaoke track.
-- The final karaoke track is exported as a WAV file using the `export` method.
+**5. Generating Cloned Voice:**
+- The voice samples and conditioning latents of the selected speaker are loaded.
+- The text is passed to the TTS (Text-to-Speech) model along with the voice samples and conditioning latents to generate the cloned voice.
+- The generated speech is saved as a WAV file.
 
-3. Reasoning:
-The chosen approach offers several advantages for voice cloning, modification, and karaoke generation:
+**6. Evaluating the Cloned Voice:**
+- The generated speech (cloned voice) is evaluated using the PESQ (Perceptual Evaluation of Speech Quality) metric to measure the similarity between the original and cloned voices.
+- PESQ is calculated using the `pesq` library, which requires both the original and cloned audio files.
+- The PESQ score is printed as the evaluation result, indicating the similarity between the original and cloned voices. A higher PESQ score indicates better similarity.
 
-3.1 Accessibility:
-The libraries used in the code, such as `gTTS` and `pydub`, provide convenient and accessible interfaces to perform the required audio manipulations. They offer a wide range of functionality and are well-documented, making them suitable for solving these tasks.
-
-3.2 Flexibility:
-The code allows flexibility in terms of input and customization. For voice cloning, the text and accent can be easily changed to generate voices in different languages and accents. For voice modification, the pitch shift value and filter options can be adjusted to achieve desired effects. Similarly, the karaoke generation provides control over volume levels, enabling fine-tuning of the output.
-
-3.3 Efficiency:
-The approach taken in the code leverages existing libraries and functions that are designed for efficient audio processing. This allows for faster execution and better performance compared to building custom solutions from scratch.
-
-4. Conclusion:
-
-The approach used for voice cloning, modification, and karaoke generation demonstrates a practical and effective solution to these audio-related tasks.
-By leveraging libraries like `gTTS` and `pydub`, the code provides accessible and flexible tools for generating voices, modifying audio characteristics, and creating karaoke tracks. The reasons for taking up this approach include accessibility, flexibility, and efficiency, allowing users to achieve desired audio effects with ease.
+**Summary:**
+The voice cloning prototype uses the Tortoise TTS library to clone the voice of a selected speaker from the VCTK Corpus dataset. After selecting a speaker, the prototype preprocesses the audio data, defines the text to be synthesized, and generates the cloned voice using the TTS model. Finally, the similarity between the original and cloned voices is evaluated using the PESQ metric. The prototype demonstrates the process of voice cloning and offers a foundation for building more sophisticated voice cloning systems.
